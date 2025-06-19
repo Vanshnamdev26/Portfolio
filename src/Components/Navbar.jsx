@@ -57,19 +57,21 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* Theme toggle or other button here */}
+        {/* Desktop Theme Toggle */}
         <div className="hidden md:flex items-center gap-4">
           <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Icon */}
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Button Only */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="p-2 text-foreground z-50 relative"
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
         {/* Mobile Nav Overlay */}
         <div
@@ -89,6 +91,11 @@ export const Navbar = () => {
               <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-primary scale-x-0 group-hover:scale-x-100 transform origin-left transition-transform duration-300"></span>
             </a>
           ))}
+          
+          {/* Theme Toggle in Mobile Menu */}
+          <div className="mt-8 pt-4 border-t border-foreground/20">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </nav>

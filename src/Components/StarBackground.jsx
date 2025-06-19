@@ -12,13 +12,10 @@ export const StarBackground = () => {
       generateStars();
     }
 
-
     window.addEventListener("resize", handleResize)
 
     return () => window.removeEventListener("resize", handleResize)
   }, []);
-
-
 
   const generateStars = () => {
     const numberOfStars = Math.floor((window.innerWidth * window.innerHeight) / 8000);
@@ -30,13 +27,12 @@ export const StarBackground = () => {
         size: Math.random() * 3 + 1,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        opacity: Math.random() * 0.5 +0.5,
+        opacity: Math.random() * 0.5 + 0.5,
         animationDuration: Math.random() * 3 + 2,
       });
     }
 
-     setStars(newStars);
-    
+    setStars(newStars);
   }
 
   const generateMeteors = () => {
@@ -55,46 +51,41 @@ export const StarBackground = () => {
       });
     }
 
-     setMeteors(newMeteors);
-    
+    setMeteors(newMeteors);
   }
 
   return (
-    <div className="inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       {stars.map((star) => (
         <div
-        className="star animate-pulse-subtle"
+          className="absolute rounded-full bg-white animate-twinkle"
           key={star.id}
           style={{
             width: star.size + "px",
             height: star.size + "px",
             left: star.x + "%",
             top: star.y + "%",
-            backgroundColor: "white",
-            borderRadius: "50%",
             opacity: star.opacity,
-            boxShadow: `0 0 ${star.size * 2}px white`, // glow effect
+            boxShadow: `0 0 ${star.size * 2}px rgba(255, 255, 255, 0.4)`,
             animationDuration: star.animationDuration + "s",
           }}
-        ></div>
+        />
       ))}
 
       {meteors.map((meteor) => (
         <div
-        className="meteor animate-meteor"
+          className="absolute bg-white rounded-full animate-meteor"
           key={meteor.id}
           style={{
-            position: "absolute",
             width: meteor.size + "px",
-            height: meteor.size*4 + "px",
+            height: meteor.size * 4 + "px",
             left: meteor.x + "%",
             top: meteor.y + "%",
-            backgroundColor: "white",
-            borderRadius: "50%",
             animationDelay: meteor.animationDelay,
             animationDuration: meteor.animationDuration + "s",
+            boxShadow: "0 0 10px 4px rgba(255, 255, 255, 0.3)",
           }}
-        ></div>
+        />
       ))}
     </div>
   );
