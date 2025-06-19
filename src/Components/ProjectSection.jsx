@@ -6,7 +6,7 @@ const projects = [
     title: "ABC",
     description:
       "A fully responsive website built using React and TailwindCSS with modern design principles.",
-    image: "/projects/project1.jpg",
+    image: "/projects/project1.png",
     tags: ["React", "TailwindCSS"],
     demoUrl: "#",
     githubUrl: "#",
@@ -16,7 +16,7 @@ const projects = [
     title: "DEF",
     description:
       "A Next.js web app focused on performance, SEO, and smooth animations using Framer Motion.",
-    image: "/projects/project2.jpg",
+    image: "/projects/project2.png",
     tags: ["React", "TailwindCSS", "Next.js"],
     demoUrl: "#",
     githubUrl: "#",
@@ -26,7 +26,7 @@ const projects = [
     title: "GHI",
     description:
       "A full-stack MERN project with Express backend and real-time functionality.",
-    image: "/projects/project3.jpg",
+    image: "/projects/project3.png",
     tags: ["React", "TailwindCSS", "Express"],
     demoUrl: "#",
     githubUrl: "#",
