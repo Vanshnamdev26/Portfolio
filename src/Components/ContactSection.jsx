@@ -11,13 +11,37 @@ import {
 import { cn } from "@/lib/utils";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
+import axios from "axios";
 
 export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    try {
+      const response = axios.post("http://localhost:5000/api/users/create", formData);
+      if (response.status === 200) {
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Failed to send message. Please try again later.");
+      setIsSubmitting(false);
+      return;
+      
+    }
     setTimeout(() => {
       toast.success("Message sent! Thank you, I'll get back to you soon.");
       setIsSubmitting(false);
@@ -95,7 +119,7 @@ export const ContactSection = () => {
                 {[
                   { icon: Linkedin, label: "LinkedIn", href: "#" },
                   { icon: Twitter, label: "Twitter", href: "#" },
-                  { icon: Instagram, label: "Instagram", href: "#" },
+                  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/vansh.namdev0/" },
                   { icon: Twitch, label: "Twitch", href: "#" },
                 ].map(({ icon: Icon, label, href }, i) => (
                   <a
@@ -119,60 +143,75 @@ export const ContactSection = () => {
           <div className="bg-card p-8 rounded-2xl shadow-md border border-border">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
             <form className="space-y-5" onSubmit={handleSubmit}>
-              {[
-                {
-                  label: "Your Name",
-                  id: "name",
-                  type: "text",
-                  placeholder: "Your Name",
-                },
-                {
-                  label: "Your Email",
-                  id: "email",
-                  type: "email",
-                  placeholder: "john@example.com",
-                },
-              ].map(({ label, id, type, placeholder }) => (
-                <div key={id}>
-                  <label htmlFor={id} className="block text-sm font-medium mb-2">
-                    {label}
-                  </label>
-                  <input
-                    type={type}
-                    id={id}
-                    name={id}
-                    required
-                    placeholder={placeholder}
-                    className="w-full px-4 py-3 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition"
-                  />
-                </div>
-              ))}
+  {[
+    {
+      label: "Your Name",
+      id: "name",
+      type: "text",
+      placeholder: "Your Name",
+    },
+    {
+      label: "Your Email",
+      id: "email",
+      type: "email",
+      placeholder: "john@example.com",
+    },
+  ].map(({ label, id, type, placeholder }) => (
+    <div key={id}>
+      <label htmlFor={id} className="block text-sm font-medium mb-2 text-muted-foreground">
+        {label}
+      </label>
+      <input
+        type={type}
+        id={id}
+        name={id}
+        required
+        placeholder={placeholder}
+        value={formData[id]}
+        onChange={(e) =>
+          setFormData((prev) => ({
+            ...prev,
+            [id]: e.target.value,
+          }))
+        }
+        className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary transition-all duration-300 shadow-sm"
+      />
+    </div>
+  ))}
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  placeholder="Hello, I'd like to talk about..."
-                  className="w-full px-4 py-3 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none transition"
-                />
-              </div>
+  <div>
+    <label htmlFor="message" className="block text-sm font-medium mb-2 text-muted-foreground">
+      Your Message
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      rows={5}
+      required
+      placeholder="Hello, I'd like to talk about..."
+      value={formData.message}
+      onChange={(e) =>
+        setFormData((prev) => ({
+          ...prev,
+          message: e.target.value,
+        }))
+      }
+      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary transition-all duration-300 shadow-sm resize-none"
+    />
+  </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "w-full flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition disabled:opacity-60"
-                )}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send size={16} />
-              </button>
-            </form>
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className={cn(
+      "w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-xl disabled:opacity-60"
+    )}
+  >
+    {isSubmitting ? "Sending..." : "Send Message"}
+    <Send size={16} />
+  </button>
+</form>
+
           </div>
         </div>
       </div>

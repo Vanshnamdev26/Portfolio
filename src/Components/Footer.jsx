@@ -2,11 +2,13 @@ import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-card border-t border-border mt-20 pt-12 pb-16 px-4">
-      <div className="container mx-auto max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+    <footer className="w-full relative  border-t border-border mt-20 pt-12 pb-16 px-4">
+      {/* Inner content with max-width constraint */}
+      <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left px-4">
         {/* Left Text */}
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} <span className="font-semibold text-primary">Vansh.co</span>. All rights reserved.
+          &copy; {new Date().getFullYear()}{" "}
+          <span className="font-semibold text-primary">Vansh.co</span>. All rights reserved.
         </p>
 
         {/* Social Icons */}
@@ -37,7 +39,7 @@ export const Footer = () => {
       </div>
 
       {/* Back to Top Button */}
-      <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10">
+      <div className="absolute left-1/2 -translate-x-1/2 z-10">
         <a
           href="#hero"
           className="group flex flex-col items-center animate-bounce transition-transform hover:scale-105"
