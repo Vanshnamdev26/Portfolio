@@ -28,7 +28,7 @@ export const Footer = () => {
             <Linkedin size={20} />
           </a>
           <a
-            href="mailto:yourmail@example.com"
+            href="mailto:vanshnwork268@gmail.com"
             className="text-muted-foreground hover:text-primary transition-colors"
           >
             <Mail size={20} />

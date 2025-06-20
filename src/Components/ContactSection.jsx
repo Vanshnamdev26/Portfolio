@@ -43,8 +43,8 @@ export const ContactSection = () => {
               {
                 icon: <Mail className="h-6 w-6 text-primary" />,
                 title: "Email",
-                value: "ajayvimal204@gmail.com",
-                href: "mailto:ajayvimal204@gmail.com",
+                value: "vanshnwork268@gmail.com",
+                href: "mailto:vanshnwork268@gmail.com",
               },
               {
                 icon: <Phone className="h-6 w-6 text-primary" />,
