@@ -34,7 +34,7 @@ export const AboutSection = () => {
                 Get In Touch
               </a>
               <a
-                href="/Vansh-Resume.pdf" // Replace with your actual CV link
+                href="/Vansh_Resume.pdf"
                 className="px-6 py-3 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300"
               >
                 Download CV
