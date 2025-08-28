@@ -41,12 +41,17 @@ export const HeroSection = () => {
 
           {/* Image */}
           <div className="flex-1 opacity-0 animate-fade-in-delay-3 flex justify-center md:justify-end">
-            <img
-              src="/vansh2.jpg"  // <-- Replace with your actual image path
-              alt="Vansh Namdev"
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-primary/40"
-              loading="lazy"
-            />
+            <div className="relative group">
+              {/* Gradient Border Wrapper */}
+              <div className="rounded-full p-[4px] bg-gradient-to-r from-primary to-pink-500 shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-transform duration-300 group-hover:scale-105">
+                <img
+                  src="/vansh1.jpg" // <-- replace with your image path
+                  alt="Vansh Namdev"
+                  className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

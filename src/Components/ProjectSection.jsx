@@ -3,22 +3,22 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "ABC",
+    title: "bookStore",
     description:
-      "A fully responsive website built using React and TailwindCSS with modern design principles.",
-    image: "/projects/project1.png",
-    tags: ["React", "TailwindCSS"],
-    demoUrl: "#",
+      "A full-stack bookstore built with React, Tailwind CSS, and Express.js, featuring book browsing, detailed views, and cart management with a clean, responsive UI.",
+    image: "/projects/bookstore.png",
+    tags: ["React", "Express", "TailwindCSS"],
+    demoUrl: "https://bookstore-frontend-zeta-flame.vercel.app/",
     githubUrl: "#",
   },
   {
     id: 2,
-    title: "DEF",
+    title: "cart-crafter-ecom",
     description:
       "A Next.js web app focused on performance, SEO, and smooth animations using Framer Motion.",
-    image: "/projects/project2.png",
+    image: "/projects/ecom.png",
     tags: ["React", "TailwindCSS", "Next.js"],
-    demoUrl: "#",
+    demoUrl: "https://cart-crafter-ecom-gamma.vercel.app/",
     githubUrl: "#",
   },
   {
@@ -50,7 +50,8 @@ export const ProjectSection = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="group bg-card border border-border rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+              onClick={() => window.open(project.demoUrl, "_blank")}
+              className="group bg-card border border-border rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
               {/* Image */}
               <div className="h-48 overflow-hidden">
@@ -91,6 +92,7 @@ export const ProjectSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-foreground/80 hover:text-primary transition"
+                      onClick={(e) => e.stopPropagation()} // prevent triggering card click
                     >
                       <ExternalLink size={20} />
                     </a>
@@ -99,6 +101,7 @@ export const ProjectSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-foreground/80 hover:text-primary transition"
+                      onClick={(e) => e.stopPropagation()} // prevent triggering card click
                     >
                       <Github size={20} />
                     </a>

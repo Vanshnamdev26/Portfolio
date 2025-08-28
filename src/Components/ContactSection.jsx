@@ -117,10 +117,9 @@ export const ContactSection = () => {
               </h4>
               <div className="flex justify-center space-x-5">
                 {[
-                  { icon: Linkedin, label: "LinkedIn", href: "#" },
+                  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/vansh-namdev-a41758245/" },
                   { icon: Twitter, label: "Twitter", href: "#" },
                   { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/vansh.namdev0/" },
-                  { icon: Twitch, label: "Twitch", href: "#" },
                 ].map(({ icon: Icon, label, href }, i) => (
                   <a
                     key={i}
